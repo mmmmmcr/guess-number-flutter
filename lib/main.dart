@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Guess my number',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Guess my number'),
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
 
   final String title;
 
@@ -53,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void generateRandom() {
-    Random random = new Random();
+    Random random = Random();
     generatedNumber = random.nextInt(101);
     generatedNumber = 12;
   }
@@ -76,14 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
     if (generatedNumber == number) {
       // Create button
       Widget okButton = TextButton(
-        child: Text("OK"),
+        child: const Text("OK"),
         onPressed: () {
           Navigator.of(context).pop();
         },
       );
 
       Widget tryAgainButton = TextButton(
-        child: Text("Try again! "),
+        child: const Text("Try again! "),
         onPressed: () {
           generateRandom();
           setState(() {
@@ -96,12 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
       // Create AlertDialog
       AlertDialog alert = AlertDialog(
-        title: Text("You guessed right"),
+        title: const Text("You guessed right"),
         content: Text("It was $number"),
-        actions: [
-          tryAgainButton,
-          okButton
-        ],
+        actions: [tryAgainButton, okButton],
       );
 
       // show the dialog
@@ -121,7 +116,6 @@ class _MyHomePageState extends State<MyHomePage> {
       hint = getHint(number);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -158,30 +152,21 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(16),
-              child: const Text(
-                  'I\'m thinking of a number between 1 and 100',
-                  style: TextStyle(fontSize: 18)
-              ),
+              margin: const EdgeInsets.all(16),
+              child: const Text('I\'m thinking of a number between 1 and 100', style: TextStyle(fontSize: 18)),
             ),
             Container(
-              margin: EdgeInsets.all(24),
-              child: const Text(
-                  'It is your turn to guess my number',
-                  style: TextStyle(fontSize: 18.0)
-              ),
+              margin: const EdgeInsets.all(24),
+              child: const Text('It is your turn to guess my number', style: TextStyle(fontSize: 18.0)),
             ),
             Text(
               hint,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
+              style: Theme.of(context).textTheme.headline4,
             ),
             Container(
               width: 400,
               height: 200,
-              padding: new EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -192,24 +177,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Text(
                       'Try a number! ',
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .headline4,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                     TextField(
                       controller: textFieldController,
                       autofocus: true,
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Enter number',
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(25),
+                      padding: const EdgeInsets.all(25),
                       child: ElevatedButton(
-                        child: Text(
-                          'Guess', style: TextStyle(fontSize: 20.0),),
+                        child: const Text(
+                          'Guess',
+                          style: TextStyle(fontSize: 20.0),
+                        ),
                         onPressed: () {
                           handleGuess();
                           showAlertDialog(context);
@@ -226,5 +210,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
