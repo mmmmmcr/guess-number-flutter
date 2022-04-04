@@ -16,6 +16,6 @@ jobs:
 - name: update packages
   run: flutter pub get
 - name: check code formating
-  run : flutter format ./lib --line-length 120 --set-exit-if-changed
+  run : flutter format --line-length 120 --set-exit-if-changed ./lib
 - name: flutter code analyses
   run: flutter analyze
